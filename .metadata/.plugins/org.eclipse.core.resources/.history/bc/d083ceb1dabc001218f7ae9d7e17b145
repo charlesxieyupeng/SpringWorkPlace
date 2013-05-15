@@ -1,0 +1,10 @@
+package com.charlie.SpringDemo;
+
+public class Triangle implements Shape {
+
+	public void draw() {
+		
+		
+	}
+
+}

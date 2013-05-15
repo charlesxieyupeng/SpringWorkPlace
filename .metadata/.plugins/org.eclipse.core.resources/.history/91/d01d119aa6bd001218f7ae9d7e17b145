@@ -1,0 +1,9 @@
+package com.charlie.SpringDemo;
+
+public class Circle implements Shape{
+
+	public void draw() {
+
+	}
+
+}

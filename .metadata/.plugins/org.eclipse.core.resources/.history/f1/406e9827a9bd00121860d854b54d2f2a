@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	<bean id="triangle" class="com.charlie.SpringDemo.Triangle"
+		init-method="init" destroy-method="destroy" >
+		<!-- <property name="name" value="Charlie" /> -->
+		<constructor-arg value="Jack" />
+		<property name="points">
+			<list>
+			    <ref bean="point1"/>
+			    <ref bean="point2"/>
+			    <ref bean="point3"/>
+			</list>
+		</property>
+	</bean>
+	<bean id="point1" class="com.charlie.SpringDemo.Point">
+		<property name="x" value="${point1.x}" />
+		<property name="y" value="${point1.y}" />
+	</bean>
+	<bean id="point2" class="com.charlie.SpringDemo.Point">
+		<property name="x" value="10" />
+		<property name="y" value="0" />
+	</bean>
+	<bean id="point3" class="com.charlie.SpringDemo.Point">
+		<property name="x" value="0" />
+		<property name="y" value="10" />
+	</bean>
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	    <property name="locations" value="pointsConfig.properties"></property>
+	</bean>
+	<bean id="circle" class="com.charlie.SpringDemo.Circle">
+	   <property name="center" ref="point1"/>
+	</bean>
+</beans>

@@ -1,0 +1,24 @@
+package com.charlie.SpringDemo;
+
+import java.util.Date;
+
+public class Triangle implements Shape {
+
+	private String name;
+	private long date;
+	public void draw() {
+		System.out.println("a triangle was printed by "+ name + " at "+ date);
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public void init(){
+		date = new Date().getTime();
+	}
+	public void destroy(){
+		
+	}
+}

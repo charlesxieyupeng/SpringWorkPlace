@@ -1,0 +1,9 @@
+package com.charlie.SpringDemo;
+
+public class Triangle implements Shape {
+
+	private String name;
+	public void draw() {
+		System.out.println("a triangle was printed!");
+	}
+}
