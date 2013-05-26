@@ -1,0 +1,11 @@
+package derby.jdbc.dao;
+
+import derby.jdbc.model.Company;
+
+public class CompanyDao {
+
+	public Company getCompany(int id){
+		return null;
+	}
+
+}

@@ -1,0 +1,8 @@
+package derby.jdbc;
+
+public class Circle {
+	int id;
+	String name;
+	
+	
+}

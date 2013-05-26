@@ -1,0 +1,17 @@
+package com.charlie.SpringDB.springJDBC;
+
+import derby.jdbc.dao.CompanyDao;
+import derby.jdbc.model.Company;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+		Company company = new CompanyDao().getCompany(3);
+		System.out.println(company.getName());
+    }
+}

@@ -1,0 +1,18 @@
+package derby.jdbc.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+import derby.jdbc.model.Company;
+
+public class CompanyDao {
+	Connection conn=null;
+	public Company getCompany(int id){
+		Class.forName("org.apache.derby.jdbc.ClientDriver").newInstance();
+		String url = "jdbc:mysql://localhost/coffeebreak";
+		conn = DriverManager.getConnection("jdbc:derby://localhost:1527/charliedb");
+		doTests();
+		conn.close();
+	}
+
+}

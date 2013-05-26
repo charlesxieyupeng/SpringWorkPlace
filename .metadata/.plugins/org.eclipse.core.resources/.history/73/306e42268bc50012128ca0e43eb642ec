@@ -1,0 +1,8 @@
+package derby.jdbc.demo;
+
+public class JDBCDemo {
+	public static void main(String[] args) {
+		
+	}
+
+}

@@ -1,0 +1,10 @@
+package derby.jdbc.demo;
+
+import derby.jdbc.dao.CircleDao;
+import derby.jdbc.model.Circle;
+
+public class JDBCDemo {
+	public static void main(String[] args) {
+		Circle circle = new CircleDao();
+	}
+}
