@@ -1,9 +1,14 @@
 package com.charlie.SpringDB.springJDBC.model;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Company {
 	private int id;
 	private String name;
-	
+	public Company(){
+		
+	}
 	public Company(int id, String name){
 		setId(id);
 		setName(name);

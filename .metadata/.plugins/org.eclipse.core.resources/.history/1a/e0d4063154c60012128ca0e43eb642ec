@@ -1,0 +1,23 @@
+package com.charlie.SpringDB.springJDBC;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.charlie.SpringDB.springJDBC.companyDao.CompanyDao;
+import com.charlie.SpringDB.springJDBC.model.Company;
+
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+    	ApplicationContext ac = new ClassPathXmlApplicationContext("SpringConfig.xml");
+    	CompanyDao companydao = (CompanyDao) ac.getBean("companyDao");
+		Company company = companydao.getCompany(3);
+		System.out.println(company.getName());
+    }
+}

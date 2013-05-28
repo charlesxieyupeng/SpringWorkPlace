@@ -1,0 +1,55 @@
+package com.charlie.SpringDB.springJDBC.companyDao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import com.charlie.SpringDB.springJDBC.model.Company;
+
+@Component
+public class CompanyDao {
+//	@Autowired annotation make sure that when a Instance of 
+//	CompanyDao was created, a DataSourde Instance was created
+	@Autowired
+	DataSource dataSource;
+							
+	
+	Connection conn;
+	Company company = null;
+	String query = "SELECT * FROM companies where id = ?";
+	public DataSource getDataSource() {
+		return dataSource;
+	}
+	public void setDataSource(DataSource dataSource) {
+		this.dataSource = dataSource;
+	}
+	public CompanyDao(){
+		
+	}
+	public Company getCompany(int id){
+		try {
+			conn = dataSource.getConnection();
+			PreparedStatement ps = conn.prepareStatement(query);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()){
+				company = new Company(id,rs.getString("NAME"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return company;
+	}
+}

@@ -1,9 +1,0 @@
-package derby.jdbc.dao;
-
-import derby.jdbc.model.Circle;
-
-public class CircleDao {
-
-
-
-}

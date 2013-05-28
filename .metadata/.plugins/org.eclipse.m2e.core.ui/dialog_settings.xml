@@ -23,13 +23,16 @@
 	</section>
 	<section name="Maven2ProjectWizardArchifactPage">
 		<list key="groupId">
+			<item value="com.charlie.SpringDB"/>
 			<item value="com.charlie"/>
 		</list>
 		<list key="package">
+			<item value="com.charlie.SpringDB.springJDBC"/>
 			<item value="com.charlie.SpringAOP"/>
 			<item value="com.charlie.SpringDemo"/>
 		</list>
 		<list key="artifactId">
+			<item value="springJDBC"/>
 			<item value="SpringAOP"/>
 			<item value="SpringDemo"/>
 		</list>
@@ -46,7 +49,6 @@
 	</section>
 	<section name="MavenProjectWizardArtifactPage">
 		<list key="groupId">
-			<item value="SpringAOP"/>
 		</list>
 		<list key="name">
 		</list>

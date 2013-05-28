@@ -1,22 +1,41 @@
 package com.charlie.SpringDB.springJDBC.companyDao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
 import com.charlie.SpringDB.springJDBC.model.Company;
 
-
+@Component
 public class CompanyDao {
+//	@Autowired annotation make sure that when a Instance of 
+//	CompanyDao was created, a DataSourde Instance was created
+//	to use it, getter and setter are needed
+	@Autowired
+	DataSource dataSource;
+
+	JdbcTemplate jdbctemplate = new JdbcTemplate();
 	Connection conn;
 	Company company = null;
 	String query = "SELECT * FROM companies where id = ?";
+	public DataSource getDataSource() {
+		return dataSource;
+	}
+	public void setDataSource(DataSource dataSource) {
+		this.dataSource = dataSource;
+	}
+	public CompanyDao(){
+
+	}
 	public Company getCompany(int id){
 		try {
-			Class.forName("org.apache.derby.jdbc.ClientDriver").newInstance();
-			conn = DriverManager.getConnection("jdbc:derby://localhost:1527/db");
+			conn = dataSource.getConnection();
 			PreparedStatement ps = conn.prepareStatement(query);
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
@@ -24,12 +43,6 @@ public class CompanyDao {
 				company = new Company(id,rs.getString("NAME"));
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		finally{
@@ -40,5 +53,10 @@ public class CompanyDao {
 			}
 		}
 		return company;
+	}
+	public int countCompany(){
+		String countquery = "SELECT count(*) from companies";
+		jdbctemplate.setDataSource(getDataSource());
+		return jdbctemplate.queryForInt(countquery);
 	}
 }
